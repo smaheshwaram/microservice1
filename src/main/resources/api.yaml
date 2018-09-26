@@ -1,0 +1,68 @@
+swagger: '2.0'
+info:
+  description: Microservice 1 API
+  version: 1.0.0
+  title: Microservice 1 API
+  contact:
+    name: Microservice 1 test service
+tags:
+  - name: test microservice1
+    description: Testing microservice 1
+schemes:
+  - https
+paths:
+  '/microservice1/users/':
+      get:
+          tags:
+            - microservice 1 test
+          summary: Get all users
+          description: Get all users
+          operationId: getAvailableUsers
+          produces:
+            - application/json
+          responses:
+            '200':
+              description: Successful operation
+              schema:
+                $ref: '#/definitions/UsersModel'
+            '404':
+              description: Incorrect data input
+
+definitions:
+  UserModel:
+    title: UserModel result.
+    description: UserModel result.
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        title: id
+        description: UserModel id to return.
+        minimum: 1
+        maximum: 9999999999
+      name:
+        type: string
+        title: UserModel name
+        description: UserModel name to return.
+      salary:
+        type: integer
+        format: int64
+        title: id
+        description: salary to return.
+        minimum: 1
+        maximum: 9999999999
+    required:
+      - id
+
+  UsersModel:
+    title: List of All Available UsersModel
+    description: List of All Available UsersModel
+    type: object
+    properties:
+      users:
+        title: List of All Available UsersModel
+        description: List of All Available UsersModel
+        type: array
+        items:
+          $ref: '#/definitions/UserModel'

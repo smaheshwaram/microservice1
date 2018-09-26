@@ -1,0 +1,1 @@
+for accessing list of users : http://localhost:8080/rest/users/all

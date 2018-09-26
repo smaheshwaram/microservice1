@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+
+<generatorConfiguration>
+    <context id="MyTables" targetRuntime="MyBatis3" defaultModelType="conditional">
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+        <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin" />
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+            <property name="addGWTInterface " value="false" />
+            <property name="suppressJavaInterface" value="false" />
+        </plugin>
+
+        <!--<commentGenerator type="org.naic.fs.NaicCommentGenerator">-->
+            <!--<property name="addRemarkComments" value="true" />-->
+        <!--</commentGenerator>-->
+
+        <jdbcConnection driverClass="org.postgresql.Driver"
+                        connectionURL="jdbc:postgresql://localhost:5432/postgres" userId="postgres" password="Orange@31" />
+
+        <!--<javaTypeResolver type="com.microservice1.microservice1.NaicJavaTypeResolver">-->
+            <!--<property name="forceBigDecimals" value="true" />-->
+        <!--</javaTypeResolver>-->
+
+        <javaModelGenerator targetPackage="com.microservice1.microservice1.dto"
+            targetProject="src/main/java">
+            <property name="constructorBased" value="false" />
+            <property name="enableSubPackages" value="false" />
+            <property name="immutable" value="false" />
+            <property name="rootClass" value="org.naic.fs.optins.common.dto.BaseDto" />
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.microservice1.microservice1.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.microservice1.microservice1.dao"
+                             implementationPackage="com.microservice1.microservice1.dao.impl" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <table schema="information_schema" tableName="users" delimitIdentifiers="false" delimitAllColumns="false" />
+
+    </context>
+</generatorConfiguration>
