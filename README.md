@@ -1,6 +1,6 @@
 For checking server port : http://localhost:8080/
 
-For accessing list of users : http://localhost:8080/swagger-ui.html/microservice1/users
+For accessing list of users : http://localhost:8080/swagger-ui.html#/microservice%201%20test/getAvailableUsers
 
 Generate swagger code classes in target package which reads from api.yaml file.
 
