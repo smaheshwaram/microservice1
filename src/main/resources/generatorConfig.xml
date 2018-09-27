@@ -14,16 +14,8 @@
             <property name="suppressJavaInterface" value="false" />
         </plugin>
 
-        <!--<commentGenerator type="org.naic.fs.NaicCommentGenerator">-->
-            <!--<property name="addRemarkComments" value="true" />-->
-        <!--</commentGenerator>-->
-
         <jdbcConnection driverClass="org.postgresql.Driver"
                         connectionURL="jdbc:postgresql://localhost:5432/postgres" userId="postgres" password="Orange@31" />
-
-        <!--<javaTypeResolver type="com.microservice1.microservice1.NaicJavaTypeResolver">-->
-            <!--<property name="forceBigDecimals" value="true" />-->
-        <!--</javaTypeResolver>-->
 
         <javaModelGenerator targetPackage="com.microservice1.microservice1.dto"
             targetProject="src/main/java">
