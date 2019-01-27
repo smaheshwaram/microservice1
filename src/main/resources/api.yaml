@@ -1,20 +1,20 @@
 swagger: '2.0'
 info:
-  description: Microservice 1 API
+  description: User API
   version: 1.0.0
-  title: Microservice 1 API
+  title: User API
   contact:
-    name: Microservice 1 test service
+    name: User service
 tags:
-  - name: test microservice1
-    description: Testing microservice 1
+  - name: User Service
+    description: User Service
 schemes:
   - https
 paths:
-  '/microservice1/users/':
+  '/userService/users/':
       get:
           tags:
-            - microservice 1 test
+            - User
           summary: Get all users
           description: Get all users
           operationId: getAvailableUsers
@@ -24,45 +24,96 @@ paths:
             '200':
               description: Successful operation
               schema:
-                $ref: '#/definitions/UsersModel'
+                $ref: '#/definitions/Users'
             '404':
               description: Incorrect data input
+      post:
+        tags:
+          - User
+        summary: Post given user name and password
+        description: Create a new user
+        operationId: postUser
+        produces:
+          - application/json
+        parameters:
+          - name: body
+            in: body
+            schema:
+              $ref: "#/definitions/PostUserAccount"
+        responses:
+          '200':
+            description: Successful operation
+            schema:
+              $ref: '#/definitions/UserModel'
+          '404':
+            description: Incorrect data input
 
 definitions:
   UserModel:
-    title: UserModel result.
-    description: UserModel result.
+    title: User Account data.
+    description: User Account data.
     type: object
     properties:
-      id:
+      userId:
         type: integer
         format: int64
-        title: id
-        description: UserModel id to return.
+        title: User id
+        description: User id for a user account.
         minimum: 1
         maximum: 9999999999
-      name:
+      userName:
         type: string
-        title: UserModel name
-        description: UserModel name to return.
-      salary:
-        type: integer
-        format: int64
-        title: id
-        description: salary to return.
-        minimum: 1
-        maximum: 9999999999
-    required:
-      - id
+        title: User name
+        description: User name
+        minLength: 1
+        maxLength: 30
+      userAddress:
+        type: string
+        title: User address
+        description: User address
+        minLength: 1
+        maxLength: 50
+      password:
+        type: string
+        title: User password
+        description: User password
+        format: "password"
+        minLength: 6
+        maxLength: 12
 
-  UsersModel:
-    title: List of All Available UsersModel
-    description: List of All Available UsersModel
+    required:
+      - userId
+
+  PostUserAccount:
+    title: Post user Account data.
+    description: Post user Account data.
+    type: object
+    properties:
+      userName:
+        type: string
+        title: User name
+        description: User name
+        minLength: 1
+        maxLength: 30
+      password:
+        type: string
+        title: User password
+        description: User password
+        format: "password"
+        minLength: 6
+        maxLength: 12
+    required:
+      - userName
+      - password
+
+  Users:
+    title: List of All Available Users
+    description: List of All Available Users
     type: object
     properties:
       users:
-        title: List of All Available UsersModel
-        description: List of All Available UsersModel
+        title: List of All Available Users
+        description: List of All Available Users
         type: array
         items:
           $ref: '#/definitions/UserModel'

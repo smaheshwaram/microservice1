@@ -5,59 +5,28 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * User Account data.
+ * Post user Account data.
  */
-@ApiModel(description = "User Account data.")
+@ApiModel(description = "Post user Account data.")
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-26T18:17:54.933-06:00")
 
-public class UserModel implements Serializable {
+public class PostUserAccount  implements Serializable {
   private static final long serialVersionUID = 1L;
-
-  @JsonProperty("userId")
-  private Long userId = null;
 
   @JsonProperty("userName")
   private String userName = null;
 
-  @JsonProperty("userAddress")
-  private String userAddress = null;
-
   @JsonProperty("password")
   private String password = null;
 
-  public UserModel userId(Long userId) {
-    this.userId = userId;
-    return this;
-  }
-
-  /**
-   * User id for a user account.
-   * minimum: 1
-   * maximum: 9999999999
-   * @return userId
-  **/
-  @ApiModelProperty(required = true, value = "User id for a user account.")
-  @NotNull
-
-@Min(1) @Max(9999999999L)
-  public Long getUserId() {
-    return userId;
-  }
-
-  public void setUserId(Long userId) {
-    this.userId = userId;
-  }
-
-  public UserModel userName(String userName) {
+  public PostUserAccount userName(String userName) {
     this.userName = userName;
     return this;
   }
@@ -66,7 +35,8 @@ public class UserModel implements Serializable {
    * User name
    * @return userName
   **/
-  @ApiModelProperty(value = "User name")
+  @ApiModelProperty(required = true, value = "User name")
+  @NotNull
 
 @Size(min=1,max=30) 
   public String getUserName() {
@@ -77,27 +47,7 @@ public class UserModel implements Serializable {
     this.userName = userName;
   }
 
-  public UserModel userAddress(String userAddress) {
-    this.userAddress = userAddress;
-    return this;
-  }
-
-  /**
-   * User address
-   * @return userAddress
-  **/
-  @ApiModelProperty(value = "User address")
-
-@Size(min=1,max=50) 
-  public String getUserAddress() {
-    return userAddress;
-  }
-
-  public void setUserAddress(String userAddress) {
-    this.userAddress = userAddress;
-  }
-
-  public UserModel password(String password) {
+  public PostUserAccount password(String password) {
     this.password = password;
     return this;
   }
@@ -106,7 +56,8 @@ public class UserModel implements Serializable {
    * User password
    * @return password
   **/
-  @ApiModelProperty(value = "User password")
+  @ApiModelProperty(required = true, value = "User password")
+  @NotNull
 
 @Size(min=6,max=12) 
   public String getPassword() {
@@ -126,26 +77,22 @@ public class UserModel implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserModel userModel = (UserModel) o;
-    return Objects.equals(this.userId, userModel.userId) &&
-        Objects.equals(this.userName, userModel.userName) &&
-        Objects.equals(this.userAddress, userModel.userAddress) &&
-        Objects.equals(this.password, userModel.password);
+    PostUserAccount postUserAccount = (PostUserAccount) o;
+    return Objects.equals(this.userName, postUserAccount.userName) &&
+        Objects.equals(this.password, postUserAccount.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, userName, userAddress, password);
+    return Objects.hash(userName, password);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserModel {\n");
+    sb.append("class PostUserAccount {\n");
 
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
-    sb.append("    userAddress: ").append(toIndentedString(userAddress)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();

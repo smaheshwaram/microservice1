@@ -12,25 +12,25 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * List of All Available UsersModel
+ * List of All Available Users
  */
-@ApiModel(description = "List of All Available UsersModel")
+@ApiModel(description = "List of All Available Users")
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-09-24T22:04:02.298-05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-26T18:17:54.933-06:00")
 
-public class UsersModel implements Serializable {
+public class Users  implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("users")
   @Valid
   private List<UserModel> users = null;
 
-  public UsersModel users(List<UserModel> users) {
+  public Users users(List<UserModel> users) {
     this.users = users;
     return this;
   }
 
-  public UsersModel addUsersItem(UserModel usersItem) {
+  public Users addUsersItem(UserModel usersItem) {
     if (this.users == null) {
       this.users = new ArrayList<>();
     }
@@ -39,10 +39,10 @@ public class UsersModel implements Serializable {
   }
 
   /**
-   * List of All Available UsersModel
+   * List of All Available Users
    * @return users
   **/
-  @ApiModelProperty(value = "List of All Available UsersModel")
+  @ApiModelProperty(value = "List of All Available Users")
 
   @Valid
 
@@ -63,7 +63,7 @@ public class UsersModel implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UsersModel users = (UsersModel) o;
+    Users users = (Users) o;
     return Objects.equals(this.users, users.users);
   }
 
@@ -75,7 +75,7 @@ public class UsersModel implements Serializable {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UsersModel {\n");
+    sb.append("class Users {\n");
 
     sb.append("    users: ").append(toIndentedString(users)).append("\n");
     sb.append("}");
@@ -92,6 +92,5 @@ public class UsersModel implements Serializable {
     }
     return o.toString().replace("\n", "\n    ");
   }
-
 }
 
