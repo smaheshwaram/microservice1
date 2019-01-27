@@ -102,6 +102,12 @@ definitions:
         format: "password"
         minLength: 6
         maxLength: 12
+      userAddress:
+        type: string
+        title: User address
+        description: User address
+        minLength: 1
+        maxLength: 50
     required:
       - userName
       - password

@@ -6,8 +6,8 @@
 package com.microservice1.microservice1.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.microservice1.microservice1.dto.UserAccount;
 import com.microservice1.microservice1.model.PostUserAccount;
+import com.microservice1.microservice1.model.UserModel;
 import com.microservice1.microservice1.model.Users;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -66,18 +66,18 @@ public interface UserServiceApi {
     }
 
 
-    @ApiOperation(value = "Post given user name and password", nickname = "postUser", notes = "Create a new user", response = UserAccount.class, tags={ "User", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful operation", response = UserAccount.class),
-        @ApiResponse(code = 404, message = "Incorrect data input") })
+    @ApiOperation(value = "Post given user name and password", nickname = "postUser", notes = "Create a new user", response = UserModel.class, tags={ "User", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successful operation", response = UserModel.class),
+            @ApiResponse(code = 404, message = "Incorrect data input") })
     @RequestMapping(value = "/userService/users/",
-        produces = { "application/json" }, 
-        method = RequestMethod.POST)
-    default ResponseEntity<UserAccount> postUser(@ApiParam(value = "") @Valid @RequestBody PostUserAccount body) {
+            produces = { "application/json" },
+            method = RequestMethod.POST)
+    default ResponseEntity<UserModel> postUser(@ApiParam(value = ""  )  @Valid @RequestBody PostUserAccount body) {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
             if (getAcceptHeader().get().contains("application/json")) {
                 try {
-                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"userAddress\" : \"userAddress\",  \"password\" : \"password\",  \"userName\" : \"userName\",  \"userId\" : 800828191}", UserAccount.class), HttpStatus.NOT_IMPLEMENTED);
+                    return new ResponseEntity<>(getObjectMapper().get().readValue("{  \"userAddress\" : \"userAddress\",  \"password\" : \"password\",  \"userName\" : \"userName\",  \"userId\" : 800828191}", UserModel.class), HttpStatus.NOT_IMPLEMENTED);
                 } catch (IOException e) {
                     log.error("Couldn't serialize response for content type application/json", e);
                     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

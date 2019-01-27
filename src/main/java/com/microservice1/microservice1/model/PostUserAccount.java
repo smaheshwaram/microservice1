@@ -1,21 +1,21 @@
 package com.microservice1.microservice1.model;
 
+import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.validation.annotation.Validated;
-
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.Objects;
+import org.springframework.validation.annotation.Validated;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * Post user Account data.
  */
 @ApiModel(description = "Post user Account data.")
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-26T18:17:54.933-06:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-26T20:53:10.828-06:00")
 
 public class PostUserAccount  implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -25,6 +25,9 @@ public class PostUserAccount  implements Serializable {
 
   @JsonProperty("password")
   private String password = null;
+
+  @JsonProperty("userAddress")
+  private String userAddress = null;
 
   public PostUserAccount userName(String userName) {
     this.userName = userName;
@@ -68,6 +71,26 @@ public class PostUserAccount  implements Serializable {
     this.password = password;
   }
 
+  public PostUserAccount userAddress(String userAddress) {
+    this.userAddress = userAddress;
+    return this;
+  }
+
+  /**
+   * User address
+   * @return userAddress
+  **/
+  @ApiModelProperty(value = "User address")
+
+@Size(min=1,max=50) 
+  public String getUserAddress() {
+    return userAddress;
+  }
+
+  public void setUserAddress(String userAddress) {
+    this.userAddress = userAddress;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -79,21 +102,23 @@ public class PostUserAccount  implements Serializable {
     }
     PostUserAccount postUserAccount = (PostUserAccount) o;
     return Objects.equals(this.userName, postUserAccount.userName) &&
-        Objects.equals(this.password, postUserAccount.password);
+        Objects.equals(this.password, postUserAccount.password) &&
+        Objects.equals(this.userAddress, postUserAccount.userAddress);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userName, password);
+    return Objects.hash(userName, password, userAddress);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostUserAccount {\n");
-
+    
     sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    userAddress: ").append(toIndentedString(userAddress)).append("\n");
     sb.append("}");
     return sb.toString();
   }
