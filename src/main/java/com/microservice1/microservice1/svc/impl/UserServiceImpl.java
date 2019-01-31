@@ -61,6 +61,26 @@ public class UserServiceImpl implements UserServiceInterface {
         return new UserModel();
     }
 
+    @Override
+    @Transactional( isolation = Isolation.DEFAULT, propagation = Propagation.SUPPORTS, readOnly = true,
+            rollbackFor = Throwable.class )
+    public UserModel validateUser(String userName, String password) throws Exception {
+        final UserModel userModel = new UserModel();
+        final UserAccountExample usersExample = new UserAccountExample();
+        usersExample.or().andUserNameEqualTo(userName).andPasswordEqualTo(password);
+        final List<UserAccount> userAccounts = userAccountMapper.selectByExample( usersExample );
+        if (userAccounts != null && !userAccounts.isEmpty() ) {
+            for (final UserAccount userAccount : userAccounts) {
+                return mapUserData(userAccount);
+            }
+        }
+        else {
+            throw new Exception( "No user found" );
+        }
+
+        return userModel;
+    }
+
     private UserModel mapUserModel(UserAccount userAccount) {
         UserModel userModel = new UserModel();
         userModel.setUserName(userAccount.getUserName());
@@ -76,7 +96,8 @@ public class UserServiceImpl implements UserServiceInterface {
         userModel.userId(user.getUserid().longValue())
                 .userName(user.getUserName())
                 .userAddress(user.getAddress())
-                .password(user.getPassword());
+                .password(user.getPassword())
+                .email(user.getEmail());
 
         return userModel;
     }

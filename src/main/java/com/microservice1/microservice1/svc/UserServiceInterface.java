@@ -9,4 +9,6 @@ public interface UserServiceInterface {
     Users getAvailableUsers() throws Exception;
 
     UserModel postUser(PostUserAccount body) throws Exception;
+
+    UserModel validateUser(String userName, String password) throws Exception;
 }

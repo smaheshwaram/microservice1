@@ -48,6 +48,39 @@ paths:
           '404':
             description: Incorrect data input
 
+  '/userService/users/{userName}':
+    get:
+      tags:
+        - User
+      summary: Validate user
+      description: Validate user
+      operationId: validateUser
+      produces:
+        - application/json
+      parameters:
+        - name: userName
+          in: path
+          type: string
+          description: User name
+          minLength: 1
+          maxLength: 30
+          required: true
+        - name: password
+          in: query
+          description: User password
+          type: string
+          format: "password"
+          minLength: 6
+          maxLength: 12
+          required: true
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/UserModel'
+        '404':
+          description: Incorrect user data input
+
 definitions:
   UserModel:
     title: User Account data.
