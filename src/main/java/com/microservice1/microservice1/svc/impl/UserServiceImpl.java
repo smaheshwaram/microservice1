@@ -52,6 +52,9 @@ public class UserServiceImpl implements UserServiceInterface {
             if (postUserAccount.getUserAddress() != null) {
                 userAccount.withAddress(postUserAccount.getUserAddress());
             }
+            if (postUserAccount.getEmail() != null) {
+                userAccount.withEmail(postUserAccount.getEmail());
+            }
             userAccountMapper.insert(userAccount);
             return mapUserModel(userAccount);
         }

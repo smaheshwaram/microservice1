@@ -17,9 +17,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "User Account data.")
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-26T18:17:54.933-06:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-01-30T19:12:03.962-06:00")
 
-public class UserModel implements Serializable {
+public class UserModel  implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("userId")
@@ -33,6 +33,9 @@ public class UserModel implements Serializable {
 
   @JsonProperty("password")
   private String password = null;
+
+  @JsonProperty("email")
+  private String email = null;
 
   public UserModel userId(Long userId) {
     this.userId = userId;
@@ -117,6 +120,26 @@ public class UserModel implements Serializable {
     this.password = password;
   }
 
+  public UserModel email(String email) {
+    this.email = email;
+    return this;
+  }
+
+  /**
+   * Email address
+   * @return email
+  **/
+  @ApiModelProperty(value = "Email address")
+
+@Size(min=1,max=50) 
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -130,12 +153,13 @@ public class UserModel implements Serializable {
     return Objects.equals(this.userId, userModel.userId) &&
         Objects.equals(this.userName, userModel.userName) &&
         Objects.equals(this.userAddress, userModel.userAddress) &&
-        Objects.equals(this.password, userModel.password);
+        Objects.equals(this.password, userModel.password) &&
+        Objects.equals(this.email, userModel.email);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, userName, userAddress, password);
+    return Objects.hash(userId, userName, userAddress, password, email);
   }
 
   @Override
@@ -147,6 +171,7 @@ public class UserModel implements Serializable {
     sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
     sb.append("    userAddress: ").append(toIndentedString(userAddress)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("}");
     return sb.toString();
   }

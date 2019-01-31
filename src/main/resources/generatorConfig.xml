@@ -15,7 +15,7 @@
         </plugin>
 
         <jdbcConnection driverClass="org.postgresql.Driver"
-                        connectionURL="jdbc:postgresql://localhost:5432/postgres" userId="USERNAME" password="PASSWORD" />
+                        connectionURL="jdbc:postgresql://localhost:5432/postgres" userId="postgres" password="Orange@31" />
 
         <javaModelGenerator targetPackage="com.microservice1.microservice1.dto"
             targetProject="src/main/java">

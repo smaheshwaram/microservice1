@@ -80,6 +80,12 @@ definitions:
         format: "password"
         minLength: 6
         maxLength: 12
+      email:
+        type: string
+        title: Email address
+        description: Email address
+        minLength: 1
+        maxLength: 50
 
     required:
       - userId
@@ -108,6 +114,13 @@ definitions:
         description: User address
         minLength: 1
         maxLength: 50
+      email:
+        type: string
+        title: Email address
+        description: Email address
+        minLength: 1
+        maxLength: 50
+
     required:
       - userName
       - password
