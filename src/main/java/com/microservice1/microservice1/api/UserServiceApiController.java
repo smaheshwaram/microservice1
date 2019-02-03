@@ -1,7 +1,6 @@
 package com.microservice1.microservice1.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.microservice1.microservice1.dto.UserAccount;
 import com.microservice1.microservice1.model.PostUserAccount;
 import com.microservice1.microservice1.model.UserModel;
 import com.microservice1.microservice1.model.Users;
